@@ -59,7 +59,7 @@ export default function FAQPage() {
         <div className='w-full bg-white p-6 rounded-lg shadow-lg'>
           <h2 className="text-2xl font-bold mb-4 text-yellow-700">Ask a Question</h2>
           {isSubmitted ? (
-            <div className="text-green-600 font-medium">Thank you for your question! We'll get back to you soon.</div>
+            <div className="text-green-600 font-medium">Thank you for your question! We`&apos;`ll get back to you soon.</div>
           ) : (
             <form onSubmit={handleSubmit} className="space-y-4">
               {['name', 'email', 'question'].map((field) => (

@@ -41,9 +41,9 @@ const Page = ({ params }) => {
       <div className='flex items-center flex-col lg:flex-row gap-4 w-full justify-center'>
           <div className='flex w-[100%] lg:w-[50%] items-center lg:items-start flex-col gap-4'>
             {
-              dataProject.map((info) => {
+              dataProject.map((info , index) => {
                 return (
-                  <div className='w-[80%] flex items-center justify-between'>
+                  <div key={index} className='w-[80%] flex items-center justify-between'>
                     <span className='text-sm text-black'>{info.text}</span>
                     <span className='text-yellow-700 font-bold'>{info.value}</span>
                   </div>
@@ -75,7 +75,7 @@ const Page = ({ params }) => {
             {
               projects.map((project) => {
                 return (
-                  <Link href={`/Projects/${project.id}`}>
+                  <Link key={project.id} href={`/Projects/${project.id}`}>
                     <Image key={project.id} src={project.img} alt='image' width={500} height={500} className='w-[100%] h-[100%]' />
                   </Link>
                 )
