@@ -19,11 +19,11 @@ app.use(cors(
 ))
 app.use(xss())
 
-// app.use(rateLimit({
-//     windowMs: 10 * 60 * 1000, // 10 minutes
-//     max: 200, // Limit each IP to 10 requests per `window` (here, per 10 minutes)
-//     message: "Too many requests, please try again later.",
-// }))
+app.use(rateLimit({
+    windowMs: 10 * 60 * 1000, // 10 minutes
+    max: 200, // Limit each IP to 10 requests per `window` (here, per 10 minutes)
+    message: "Too many requests, please try again later.",
+}))
 
 app.use(helmet())
 
