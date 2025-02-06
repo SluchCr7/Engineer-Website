@@ -1,9 +1,7 @@
 'use client'
 import React, { useState } from 'react';
-import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import 'swiper/css/pagination';
-import { Pagination } from 'swiper/modules';
 import Intro from './intro';
 import { projects } from '../Data';
 import Image from 'next/image';
@@ -34,8 +32,8 @@ const LatestProj = () => {
     }
   };
   return (
-    <div className="w-full flex items-center flex-col gap-3 min-h-[80vh] py-5 px-10 bg-yellow-600">
-      <div className='w-full flex items-center lg:items-start justify-between flex-col lg:flex-row'>
+    <div className="w-full flex items-start flex-col gap-3 min-h-[80vh] py-5 px-10 bg-yellow-600">
+      <div className='w-full flex items-start lg:items-center justify-between flex-col lg:flex-row'>
         <Intro
           title="Latest Projects"
           desc="Check out our latest construction projects around the world"
@@ -45,23 +43,24 @@ const LatestProj = () => {
           <span onClick={next} className='w-[40px] h-[40px] rounded-full border-[1px] border-yellow-700 flex items-center justify-center text-black hover:bg-black hover:text-yellow-500 duration-700'><FaArrowRight/></span>
         </div>
       </div>
-      <div className='flex items-center gap-4'>
-        <div className="w-[100%] opacity-20 h-fit containProject flex items-center justify-center">
-          <div className='w-[100%] h-fit'>              
-            <Image
-              src={projects[projectOne]?.img}
-              alt={projects[projectOne]?.name}
-              className="w-[100%] object-cover rounded-md "
-              width={2000}
-              height={2000}
-            />
-          </div>
-          <div className='dataProject flex items-center justify-center'>
-            <span className='text-yellow-700 font-bold uppercase text-2xl'>{projects[projectOne]?.name}</span>
-            <span className='text-white'>{projects[projectOne]?.location}</span>
+      <div className='grid grid-cols-1 md:grid-cols-3 gap-4'>
+        <div className="w-[100%] opacity-30 transition-opacity duration-700 h-fit flex items-center justify-center">
+          <div className='w-[100%] h-fit'>  
+            {
+              projectOne < 0 ?
+                ""
+                :
+                <Image
+                  src={projects[projectOne]?.img}
+                  alt={projects[projectOne]?.name}
+                  className="w-[100%] object-cover rounded-md "
+                  width={2000}
+                  height={2000}
+                />
+            }
           </div>
         </div>
-        <div className="w-[100%] h-fit containProject flex items-center justify-center">
+        <div className="w-[100%] opacity-100 transition-opacity duration-700 h-fit flex items-center justify-center">
           <div className='w-[100%] h-fit'>              
             <Image
               src={projects[projectTwo]?.img}
@@ -71,24 +70,22 @@ const LatestProj = () => {
               height={2000}
             />
           </div>
-          <div className='dataProject flex items-center justify-center'>
-            <span className='text-yellow-700 font-bold uppercase text-2xl'>{projects[projectTwo]?.name}</span>
-            <span className='text-white'>{projects[projectTwo]?.location}</span>
-          </div>
         </div>
-        <div className="w-[100%] opacity-20 h-fit containProject flex items-center justify-center">
+        <div className="w-[100%] opacity-30 transition-opacity duration-700 h-fit  flex items-center justify-center">
           <div className='w-[100%] h-fit'>              
-            <Image
-              src={projects[projectThree]?.img}
-              alt={projects[projectThree]?.name}
-              className="w-[100%] object-cover rounded-md "
-              width={2000}
-              height={2000}
-            />
-          </div>
-          <div className='dataProject flex items-center justify-center'>
-            <span className='text-yellow-700 font-bold uppercase text-2xl'>{projects[projectThree]?.name}</span>
-            <span className='text-white'>{projects[projectThree]?.location}</span>
+            {
+              projectThree > projects.length - 1
+                ? 
+                ""
+                :
+                <Image
+                  src={projects[projectThree]?.img}
+                  alt={projects[projectThree]?.name}
+                  className="w-[100%] object-cover rounded-md "
+                  width={2000}
+                  height={2000}
+                />
+            }
           </div>
         </div>
       </div>

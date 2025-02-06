@@ -78,7 +78,7 @@ const Header = ({login , setLogin}) => {
                         user ? 
                             <div className='relative'>
                                 <Image onClick={() => setShowMenu(!showMenu)} src={user?.profilePhoto?.url} alt='profile-photo' width={200} height={200} className="w-[40px] h-[40px] rounded-full"/>
-                                <div className={` ${showMenu ? "opacity-100" : "opacity-0"} flex transition-opacity duration-700 absolute -right-6 top-14 items-start flex-col rounded-xl w-[250px] bg-black `}>
+                                <div className={` ${showMenu ? "opacity-100" : "opacity-0 pointer-events-none"} flex transition-opacity duration-700 absolute -right-6 top-14 items-start flex-col rounded-xl w-[250px] bg-black `}>
                                     <div className='flex items-center w-full justify-between px-3 py-5 hover:bg-gray-950 rounded-xl duration-700'>
                                         <span className='text-yellow-600 text-xl'><CgProfile/></span>
                                         <span className='text-white text-sm font-bold'>{user.name}</span>
