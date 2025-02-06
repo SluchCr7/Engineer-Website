@@ -1,0 +1,165 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.Menu{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 100;
+}
+
+.title{
+    padding-left: 45px;
+}
+.title::before{
+    content: "";
+    width: 40px;
+    height: 2px;
+    background-color: #d1a506;
+    position: absolute;
+    top: 50%;
+    left: 0;
+}
+.title_num{
+  /* Stroke text */
+    -webkit-text-stroke: 1px #d1a506;
+    -webkit-text-fill-color: transparent;
+    font-weight: 900;
+}
+.heading{
+    transition: 1px all ease;
+}
+.heading::after{
+    background-color: #d1a506;
+    width: 100%;
+    height: 1px;
+    content: "";
+    position: absolute;
+    top: 30px;
+    left: 0;
+}
+.heading:hover{
+    width: 100%;
+}
+.listDetails{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
+  color: white;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Hidden from view */
+  transition: opacity 0.3s, visibility 0.3s; /* Smooth transition */
+}
+.imageContainer:hover .listDetails{
+    opacity: 1; /* Show on hover */
+    visibility: visible; /* Visible on hover */
+}
+
+.itemFilter{
+    filter: contrast(0.8);
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+.gradient_border {
+    border: 5px solid; /* Adjust the border width as needed */
+    border-image: linear-gradient(to left, rgb(177, 128, 4), black) 1;
+    /* Adjust direction and colors in the gradient as needed */
+    border-radius: 5px; /* Optional: Add rounded corners */
+}
+.dataProject{
+  position: absolute;
+  bottom: 0%;
+  top: 0%;
+  left: 0;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  justify-content: center;
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */ 
+  color: white;
+  text-align: center;
+  padding: 10px;
+  box-sizing: border-box;
+  opacity: 0; /* Initially hidden */
+  visibility: hidden; /* Hidden from view */
+  transition: opacity 1s, visibility 0.3s; /* Smooth transition */
+}
+
+.containProject:hover .dataProject{
+    opacity: 1;
+    visibility: visible;
+}
+
+.NameDetail{
+    height: 100%;
+    width: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    opacity: 0; /* Initially hidden */
+    visibility: hidden; /* Hidden from view */
+    transition: opacity 1s, visibility 0.3s; /* Smooth transition */
+    border-radius: 10px;
+}
+
+.contentContainer:hover .NameDetail{
+    opacity: 1;
+    visibility: visible;
+}
+
+.timeanimate{
+    transition: visibility 1s; /* Smooth transition */
+}
+
+/* Scrollbar Styles */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: rgb(177, 128, 4);
+}
+
+.admin-card {
+    @apply flex flex-col items-center gap-3 bg-black text-white p-5 rounded-lg cursor-pointer hover:bg-gray-900 transition;
+}
+
+.product-card {
+    @apply border border-yellow-700 p-6 rounded-lg shadow-lg flex flex-col items-center gap-4 relative bg-white;
+}
+
+.user-card {
+    @apply border p-4 rounded-lg shadow-lg flex flex-col items-center bg-white;
+}
+
+.price-badge {
+    @apply absolute top-2 right-2 bg-black text-yellow-500 z-[999] py-1 px-3 rounded-2xl;
+}
+
+.btn-primary {
+    @apply bg-black text-yellow-600 p-3 rounded-lg font-bold hover:bg-gray-900 transition;
+}
+
+.btn-danger {
+    @apply bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition;
+}
+
+.product-image {
+    @apply w-full object-cover rounded-md cursor-pointer transform transition-transform hover:scale-105;
+};
