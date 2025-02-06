@@ -3,7 +3,7 @@ import React from 'react';
 
 const Hero = () => {
   return (
-    <div className="relative w-full min-h-[100vh] flex items-center justify-center bg-fixed bg-cover bg-center" style={{ backgroundImage: `url('/imagesecond.webp')` }}>
+    <div className="relative w-full min-h-[100vh] flex items-center justify-center bg-fixed bg-cover bg-center" style={{ backgroundImage: `url('https://xtratheme.com/elementor/building/wp-content/uploads/sites/5/revslider/xtra_slider_contruction/slider1.webp')` }}>
       {/* Overlay for better text contrast */}
       <div className="absolute inset-0 bg-black bg-opacity-50"></div>
 
