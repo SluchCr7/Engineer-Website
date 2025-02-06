@@ -92,7 +92,7 @@ const DeleteUser = asyncHandler(async (req, res) => {
  * @desc Get a user
  */
 const GetUser = asyncHandler(async (req, res) => {
-    const user = await User.findById(req.params.id).populate("orders")
+    const user = await User.findById(req.params.id)
     if (!user) {
         return res.status(404).json({ message: "User Not Found" })
     }
@@ -107,7 +107,7 @@ const GetUser = asyncHandler(async (req, res) => {
  */
 
 const getAllUser = asyncHandler(async (req, res) => {
-    const users = await User.find().populate("orders")
+    const users = await User.find()
     res.status(200).json(users)
 })  
 
