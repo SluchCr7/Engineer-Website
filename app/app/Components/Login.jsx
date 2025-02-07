@@ -9,8 +9,8 @@ const Login = ({ login, setLogin, setSignUp }) => {
     const [user , setUser] = useState({email : "" , password : ""})
     return (
     <div className={`${login ? "Menu" : ""}`}>          
-        <div className={`${login ? "flex" : "hidden"} z-[1000] items-center w-[80%] md:w-[500px] absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] justify-center min-h-screen`}>
-        <div className="w-full max-w-md p-8 space-y-6 bg-white shadow-lg rounded-lg border border-yellow-300">
+        <div className={`${login ? "opacity-100" : "opacity-0 pointer-events-none"} transition-opacity duration-700 flex z-[1000] items-center w-[80%] md:w-[500px] absolute top-1/2 left-1/2 translate-x-[-50%] translate-y-[-50%] justify-center min-h-screen`}>
+        <div className="w-full max-w-md relative p-8 space-y-6 bg-white shadow-lg rounded-lg border border-yellow-300">
             <span className="text-yellow-600 text-xl absolute top-2 right-2"><IoClose onClick={() => setLogin(false)}/></span>
             <h2 className="text-2xl font-bold text-center text-yellow-600">Login</h2>        
             <form onSubmit={(e) => LoginUser(user.email , user.password , e)} className="space-y-4">
