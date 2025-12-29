@@ -15,7 +15,7 @@ module.exports = {
 				'card-foreground': 'rgb(var(--card-foreground) / <alpha-value>)',
 				border: 'rgb(var(--border) / <alpha-value>)',
 
-				secondary: 'rgb(var(--secondary) / <alpha-value>)', // <-- أضف هذا
+				secondary: 'rgb(var(--secondary) / <alpha-value>)',
 				obsidian: '#0B0D17',
 				'slate-gray': '#1E293B',
 				'electric-cobalt': '#2563EB',

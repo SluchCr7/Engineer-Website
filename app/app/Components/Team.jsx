@@ -86,7 +86,7 @@ const Team = () => {
                                 </div>
                                 <h3 className='font-display font-black text-xl mb-1 group-hover:text-electric-cobalt transition-colors'>{member.name}</h3>
                                 <p className='text-electric-cobalt/80 text-xs font-bold uppercase tracking-wider mb-4'>{member.role}</p>
-                                <p className='text-xs text-foreground/50 leading-relaxed italic'>"{member.desc}"</p>
+                                <p className='text-xs text-foreground/50 leading-relaxed italic'>{member.desc}</p>
 
                                 <div className='mt-6 pt-4 border-t border-white/5 flex items-center justify-between'>
                                     <span className="text-[10px] font-bold uppercase tracking-tighter text-foreground/30">ID.240{member.id}</span>

@@ -71,7 +71,7 @@ const Openions = () => {
                 </div>
 
                 <p className='text-lg md:text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-foreground/80'>
-                  "{test.text}"
+                  {test.text}
                 </p>
 
                 <div className="flex items-center gap-5 pt-8 border-t border-white/5">
