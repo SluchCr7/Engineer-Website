@@ -5,47 +5,64 @@
 @layer base {
   :root {
     --background: 255 255 255;
-    --foreground: #0F172A;
-    --card: #FFFFFF;
-    --card-foreground: #0F172A;
-    --popover: #FFFFFF;
-    --popover-foreground: #0F172A;
-    --primary: #2563EB;
-    --primary-foreground: #FFFFFF;
-    --secondary: #F1F5F9;
-    --secondary-foreground: #1E293B;
-    --muted: #F1F5F9;
-    --muted-foreground: #64748B;
-    --accent: #F1F5F9;
-    --accent-foreground: #1E293B;
-    --destructive: #EF4444;
-    --destructive-foreground: #FFFFFF;
-    --border: #E2E8F0;
-    --input: #E2E8F0;
-    --ring: #2563EB;
+    --foreground: 15 23 42;
+
+    --card: 255 255 255;
+    --card-foreground: 15 23 42;
+
+    --popover: 255 255 255;
+    --popover-foreground: 15 23 42;
+
+    --primary: 37 99 235;
+    --primary-foreground: 255 255 255;
+
+    --secondary: 241 245 249;
+    --secondary-foreground: 30 41 59;
+
+    --muted: 241 245 249;
+    --muted-foreground: 100 116 139;
+
+    --accent: 241 245 249;
+    --accent-foreground: 30 41 59;
+
+    --destructive: 239 68 68;
+    --destructive-foreground: 255 255 255;
+
+    --border: 226 232 240;
+    --input: 226 232 240;
+    --ring: 37 99 235;
+
     --radius: 0.5rem;
   }
 
   .dark {
     --background: 11 13 23;
-    --foreground: #F8FAFC;
-    --card: #1E293B;
-    --card-foreground: #F8FAFC;
-    --popover: #0B0D17;
-    --popover-foreground: #F8FAFC;
-    --primary: #2563EB;
-    --primary-foreground: #FFFFFF;
-    --secondary: #1E293B;
-    --secondary-foreground: #F8FAFC;
-    --muted: #1E293B;
-    --muted-foreground: #94A3B8;
-    --accent: #1E293B;
-    --accent-foreground: #F8FAFC;
-    --destructive: #7F1D1D;
-    --destructive-foreground: #F8FAFC;
-    --border: #1E293B;
-    --input: #1E293B;
-    --ring: #2563EB;
+    --foreground: 248 250 252;
+
+    --card: 30 41 59;
+    --card-foreground: 248 250 252;
+
+    --popover: 11 13 23;
+    --popover-foreground: 248 250 252;
+
+    --primary: 37 99 235;
+    --primary-foreground: 255 255 255;
+
+    --secondary: 30 41 59;
+    --secondary-foreground: 248 250 252;
+
+    --muted: 30 41 59;
+    --muted-foreground: 148 163 184;
+
+    --accent: 30 41 59;
+    --accent-foreground: 248 250 252;
+
+    --destructive: 127 29 29;
+    --destructive-foreground: 248 250 252;
+
+    --border: 30 41 59;
+    --input: 30 41 59;
+    --ring: 37 99 235;
   }
 }
 
@@ -53,10 +70,17 @@
   * {
     @apply border-border;
   }
+
   body {
     @apply bg-background text-foreground font-sans selection:bg-electric-cobalt selection:text-white;
   }
-  h1, h2, h3, h4, h5, h6 {
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
     @apply font-display font-bold tracking-tight;
   }
 }
@@ -89,38 +113,34 @@
 }
 
 .glow-hover {
-  @apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] dark:hover:shadow-[0_0_30px_rgba(37,99,235,0.15)];
+  @apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(37, 99, 235, 0.2)] dark:hover:shadow-[0_0_30px_rgba(37, 99, 235, 0.15)];
 }
 
 .industrial-grid {
-  background-image: 
-    radial-gradient(circle at 2px 2px, rgba(37,99,235,0.05) 1px, transparent 0);
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(37, 99, 235, 0.05) 1px, transparent 0);
   background-size: 24px 24px;
 }
 
 .dark .industrial-grid {
-  background-image: 
-    radial-gradient(circle at 2px 2px, rgba(37,99,235,0.1) 1px, transparent 0);
+  background-image:
+    radial-gradient(circle at 2px 2px, rgba(37, 99, 235, 0.1) 1px, transparent 0);
 }
 
 /* Button & Interaction Styles */
 .btn-premium {
-  @apply relative overflow-hidden px-6 py-3 rounded-md font-medium transition-all duration-300
-         bg-electric-cobalt text-white shadow-lg hover:shadow-electric-cobalt/30
-         hover:-translate-y-0.5 active:translate-y-0 active:scale-95;
+  @apply relative overflow-hidden px-6 py-3 rounded-md font-medium transition-all duration-300 bg-electric-cobalt text-white shadow-lg hover:shadow-electric-cobalt/30 hover:-translate-y-0.5 active:translate-y-0 active:scale-95;
 }
 
 .btn-outline-premium {
-  @apply px-6 py-3 rounded-md font-medium transition-all duration-300
-         border border-border bg-transparent hover:bg-secondary
-         hover:border-electric-cobalt/50 active:scale-95;
+  @apply px-6 py-3 rounded-md font-medium transition-all duration-300 border border-border bg-transparent hover:bg-secondary hover:border-electric-cobalt/50 active:scale-95;
 }
 
 /* Blueprint Pattern */
 .blueprint-bg {
-  background-image: 
-    linear-gradient(to right, rgba(37,99,235,0.05) 1px, transparent 1px),
-    linear-gradient(to bottom, rgba(37,99,235,0.05) 1px, transparent 1px);
+  background-image:
+    linear-gradient(to right, rgba(37, 99, 235, 0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37, 99, 235, 0.05) 1px, transparent 1px);
   background-size: 40px 40px;
 }
 
@@ -129,10 +149,11 @@
   @apply bg-clip-text text-transparent bg-gradient-to-r from-electric-cobalt to-cyber-lime;
 }
 
-/* Old styles to replace or migrate */
+/* Old styles */
 .title {
   @apply relative pl-12 font-display;
 }
+
 .title::before {
   content: "";
   @apply absolute left-0 top-1/2 -translate-y-1/2 w-10 h-[2px] bg-electric-cobalt;
@@ -141,19 +162,20 @@
 .heading {
   @apply relative inline-block transition-all duration-300;
 }
+
 .heading::after {
   content: "";
   @apply absolute -bottom-1 left-0 w-0 h-[2px] bg-electric-cobalt transition-all duration-300;
 }
+
 .heading:hover::after {
   @apply w-full;
 }
 
-/* Masonry for Portfolio (Simplified) */
+/* Masonry */
 .masonry-grid {
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
   grid-gap: 1.5rem;
   grid-auto-flow: dense;
 }
-
