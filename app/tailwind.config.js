@@ -15,12 +15,14 @@ module.exports = {
 				'card-foreground': 'rgb(var(--card-foreground) / <alpha-value>)',
 				border: 'rgb(var(--border) / <alpha-value>)',
 
+				secondary: 'rgb(var(--secondary) / <alpha-value>)', // <-- أضف هذا
 				obsidian: '#0B0D17',
 				'slate-gray': '#1E293B',
 				'electric-cobalt': '#2563EB',
 				'cyber-lime': '#BEF264',
 				'gold-accent': '#F59E0B',
 			},
+
 			borderRadius: {
 				lg: 'var(--radius)',
 				md: 'calc(var(--radius) - 2px)',
