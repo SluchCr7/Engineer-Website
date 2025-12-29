@@ -9,16 +9,16 @@ module.exports = {
   theme: {
   	extend: {
   		colors: {
-  			background: 'var(--background)',
-  			foreground: 'var(--foreground)',
+				background: 'rgb(var(--background) / <alpha-value>)',
+				foreground: 'rgb(var(--foreground) / <alpha-value>)',
         obsidian: '#0B0D17',
         'slate-gray': '#1E293B',
         'electric-cobalt': '#2563EB',
         'cyber-lime': '#BEF264',
         'gold-accent': '#F59E0B',
-        border: 'var(--border)',
-        card: 'var(--card)',
-        'card-foreground': 'var(--card-foreground)',
+				card: 'rgb(var(--card) / <alpha-value>)',
+				border: 'rgb(var(--border) / <alpha-value>)',
+		'card-foreground': 'rgb(var(--card-foreground) / <alpha-value>)',
   		},
   		borderRadius: {
   			lg: 'var(--radius)',

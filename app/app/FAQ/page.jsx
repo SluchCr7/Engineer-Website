@@ -5,7 +5,7 @@ import FAQestion from '../Components/FAQestion';
 import Image from 'next/image';
 import Intro from '../Components/intro';
 import { motion } from 'framer-motion';
-import { HelpCircle, MessageSquare, Send, ShieldInfo, Cpu, BookOpen } from 'lucide-react';
+import { HelpCircle, MessageSquare, Send, Shield, Cpu, BookOpen } from 'lucide-react';
 
 export default function FAQPage() {
   const [formData, setFormData] = useState({ name: '', email: '', question: '' });
@@ -85,7 +85,7 @@ export default function FAQPage() {
 
               {isSubmitted ? (
                 <div className="p-6 glass border border-green-500/20 rounded-2xl text-center">
-                  <ShieldInfo size={32} className="text-green-500 mx-auto mb-4" />
+                  <Shield size={32} className="text-green-500 mx-auto mb-4" />
                   <p className="text-xs font-bold uppercase tracking-widest text-white">Protocol Received</p>
                   <p className="text-[10px] text-foreground/40 font-bold uppercase tracking-widest mt-2">Engineering response imminent.</p>
                 </div>
@@ -149,7 +149,7 @@ export default function FAQPage() {
 
               <div className="flex flex-col gap-6">
                 <div className='flex items-center gap-3 mb-2'>
-                  <ShieldInfo size={20} className="text-electric-cobalt" />
+                  <Shield size={20} className="text-electric-cobalt" />
                   <h3 className="text-lg font-black font-display uppercase tracking-tight">Operational Support</h3>
                 </div>
                 <div className="grid grid-cols-1 gap-4">
