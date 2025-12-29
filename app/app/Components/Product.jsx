@@ -3,6 +3,8 @@ import React, { useContext, useState } from 'react'
 import { OrderContext } from '../Context/OrderContext'
 import Link from 'next/link'
 import Image from 'next/image'
+import { Plus, Minus, ShoppingCart, Info, Activity } from 'lucide-react'
+import { motion } from 'framer-motion'
 
 const Product = ({ product }) => {
   const { addProduct } = useContext(OrderContext)
@@ -18,27 +20,76 @@ const Product = ({ product }) => {
   }
 
   return (
-    <div key={product._id} className='border flex items-center my-8 shadow-lg flex-col gap-4 relative border-yellow-700 p-6 rounded-lg'>
-      <span className='absolute top-2 z-[999] right-2 bg-black text-yellow-500 py-1 px-3 rounded-2xl'>${product.price}</span>
-      
-      <Link href={`/Shop/${product._id}`}>
-        <Image src={product?.image[0]?.url} alt={product.name} width={400} height={400} className='w-full object-cover rounded-md cursor-pointer transition-transform transform hover:scale-105' />
-      </Link>
-      
-      <span className='text-yellow-600 text-lg font-semibold'>{product.name}</span>
-      
-      <div className='flex flex-col items-center w-full'>
-        <div className='flex items-center w-full bg-black rounded-lg overflow-hidden'>
-          <button onClick={handleIncrease} className='text-yellow-500 bg-black px-4 py-2 text-2xl w-full transition hover:bg-yellow-600 hover:text-black'>+</button>
-          <span className='text-2xl text-black bg-yellow-500 w-full px-4 py-2 text-center'>{productCount}</span>
-          <button onClick={handleDecrease} className='text-yellow-500 bg-black px-4 py-2 text-2xl w-full transition hover:bg-yellow-600 hover:text-black'>-</button>
-        </div>
-        
-        <button className={`bg-black p-3 w-full font-semibold text-yellow-500 mt-2 rounded-lg transition ${productCount > 0 ? 'hover:bg-yellow-600 hover:text-black' : 'opacity-50 cursor-not-allowed'}`} onClick={handleAddToCart} disabled={productCount === 0}>
-          Add To Cart
-        </button>
+    <motion.div
+      initial={{ opacity: 0, y: 20 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      viewport={{ once: true }}
+      className='glass-card flex flex-col gap-5 p-6 rounded-3xl group glow-hover border border-white/5 relative overflow-hidden'
+    >
+      {/* Precision UI Badge */}
+      <div className='absolute top-4 left-4 z-10 flex items-center gap-2'>
+        <div className="w-1.5 h-1.5 rounded-full bg-electric-cobalt animate-pulse"></div>
+        <span className='text-[8px] font-black uppercase tracking-[0.2em] text-foreground/40'>Industrial Grade</span>
       </div>
-    </div>
+
+      <span className='absolute top-4 right-4 z-20 glass px-4 py-1.5 rounded-xl text-electric-cobalt font-black font-display text-sm border border-electric-cobalt/20'>
+        ${product.price}
+      </span>
+
+      <div className="relative aspect-square rounded-2xl overflow-hidden mt-4">
+        <Link href={`/Shop/${product._id}`} className="block w-full h-full">
+          <Image
+            src={product?.image[0]?.url}
+            alt={product.name}
+            fill
+            className='object-cover transition-transform duration-700 group-hover:scale-110 grayscale group-hover:grayscale-0'
+          />
+        </Link>
+        <div className="absolute inset-0 bg-gradient-to-t from-obsidian/40 to-transparent pointer-events-none"></div>
+      </div>
+
+      <div className="flex flex-col gap-1">
+        <h3 className='font-display font-black text-lg tracking-tight uppercase group-hover:text-electric-cobalt transition-colors'>
+          {product.name}
+        </h3>
+        <div className="flex items-center gap-2 text-[10px] text-foreground/40 font-bold uppercase tracking-widest">
+          <Activity size={10} className="text-electric-cobalt" /> SKU: 0x{product._id.slice(-6)}
+        </div>
+      </div>
+
+      <div className='flex flex-col gap-4'>
+        <div className='flex items-center p-1 glass border border-white/5 rounded-2xl overflow-hidden'>
+          <button
+            onClick={handleDecrease}
+            className='p-3 rounded-xl hover:bg-electric-cobalt/10 text-foreground transition-all flex-1 flex justify-center'
+          >
+            <Minus size={16} />
+          </button>
+          <span className='w-12 text-center font-display font-black text-lg'>{productCount}</span>
+          <button
+            onClick={handleIncrease}
+            className='p-3 rounded-xl hover:bg-electric-cobalt/10 text-foreground transition-all flex-1 flex justify-center'
+          >
+            <Plus size={16} />
+          </button>
+        </div>
+
+        <button
+          onClick={handleAddToCart}
+          disabled={productCount === 0}
+          className={`btn-premium flex items-center justify-center gap-3 py-3 ${productCount === 0 ? 'opacity-30 cursor-not-allowed grayscale' : ''}`}
+        >
+          Provision Hub <ShoppingCart size={18} />
+        </button>
+
+        <Link
+          href={`/Shop/${product._id}`}
+          className="flex items-center justify-center gap-2 text-xs font-bold uppercase tracking-widest text-foreground/40 hover:text-electric-cobalt transition-colors"
+        >
+          Sector Specs <Info size={14} />
+        </Link>
+      </div>
+    </motion.div>
   )
 }
 

@@ -1,73 +1,115 @@
+'use client'
 import React from 'react'
-import { Icons , Links , contact } from '../Data';
+import { Links, contact } from '../Data';
 import Link from 'next/link';
+import { Linkedin, Twitter, Github, Mail, Phone, MapPin, Clock, ShieldCheck, Cpu } from 'lucide-react';
+
 const Footer = () => {
   return (
-    <div className='flex items-center flex-col w-full'>
-      <div className='w-full bg-[#2e2e2e] py-10 px-16 grid grid-cols-2 lg:grid-cols-4 gap-6'>
-        <div className='flex items-start gap-4 flex-col w-full'>
-          <span className='text-yellow-700 relative w-[80%] text-lg'><span className='heading'>SluchBui.Co</span></span>
-          <p className='text-sm w-[100%] md:w-[60%] text-white'>Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum nobis quas, vel nisi itaque sit blanditiis totam earum </p>
-          <div className='grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-3 text-2xl text-yellow-700'>
-            {
-              Icons.map((icon) => {
-                return (
-                  <span key={icon.id} className='border-[1px] border-yellow-700 w-[35px] h-[35px] rounded-full flex items-center justify-center'>{icon.icon}</span>
-                )
-              })
-            }
+    <footer className='w-full bg-obsidian border-t border-white/5 pt-24 pb-12 relative overflow-hidden'>
+      {/* Structural Decoration */}
+      <div className="absolute top-0 left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-electric-cobalt/30 to-transparent"></div>
+      <div className="absolute -bottom-24 -right-24 w-96 h-96 bg-electric-cobalt/10 blur-[120px] rounded-full"></div>
+
+      <div className='max-w-7xl mx-auto px-6 md:px-12'>
+        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-16 mb-20'>
+          {/* Brand Identity */}
+          <div className='flex flex-col gap-6'>
+            <div className="flex items-center gap-2">
+              <Cpu className="text-electric-cobalt" size={24} />
+              <span className='font-display font-black text-2xl tracking-tighter uppercase text-white'>
+                Sluch<span className="text-electric-cobalt">Bui</span>Hub
+              </span>
+            </div>
+            <p className='text-sm text-foreground/50 leading-relaxed font-medium'>
+              Advancing structural integrity through algorithmic precision and sustainable industrial engineering since 1974. Defining the foundations of tomorrow.
+            </p>
+            <div className='flex items-center gap-4 mt-2'>
+              <button className='w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center text-white hover:bg-electric-cobalt transition-colors'>
+                <Linkedin size={18} />
+              </button>
+              <button className='w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center text-white hover:bg-electric-cobalt transition-colors'>
+                <Twitter size={18} />
+              </button>
+              <button className='w-10 h-10 rounded-full glass border border-white/10 flex items-center justify-center text-white hover:bg-electric-cobalt transition-colors'>
+                <Github size={18} />
+              </button>
+            </div>
+          </div>
+
+          {/* Indexing Map */}
+          <div className='flex flex-col gap-6'>
+            <span className='text-[10px] font-black uppercase tracking-[0.3em] text-electric-cobalt'>System Index</span>
+            <ul className='grid grid-cols-2 gap-y-3 gap-x-8'>
+              {Links.map((link) => (
+                <li key={link}>
+                  <Link
+                    href={`/${link === 'Home' ? '' : link}`}
+                    className='text-sm text-white/50 hover:text-electric-cobalt transition-colors font-bold uppercase tracking-widest'
+                  >
+                    {link}
+                  </Link>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* Communication Protocols */}
+          <div className='flex flex-col gap-6'>
+            <span className='text-[10px] font-black uppercase tracking-[0.3em] text-electric-cobalt'>Protocols</span>
+            <ul className='flex flex-col gap-4'>
+              <li className='flex items-center gap-4 text-white/50'>
+                <MapPin size={18} className="text-electric-cobalt" />
+                <span className='text-xs font-medium'>15th Industrial Ave, NY, USA</span>
+              </li>
+              <li className='flex items-center gap-4 text-white/50'>
+                <Phone size={18} className="text-electric-cobalt" />
+                <span className='text-xs font-medium'>+1 (800) STRUCT-LINK</span>
+              </li>
+              <li className='flex items-center gap-4 text-white/50'>
+                <Mail size={18} className="text-electric-cobalt" />
+                <span className='text-xs font-medium'>eng@sluchbui.hub</span>
+              </li>
+            </ul>
+          </div>
+
+          {/* Operational Uptime */}
+          <div className='flex flex-col gap-6'>
+            <span className='text-[10px] font-black uppercase tracking-[0.3em] text-electric-cobalt'>Operational Uptime</span>
+            <div className='flex flex-col gap-4 p-5 glass border border-white/5 rounded-2xl'>
+              <div className="flex items-center gap-3 mb-2">
+                <Clock size={16} className="text-electric-cobalt" />
+                <span className="text-[10px] font-black uppercase tracking-widest text-white">System Availability</span>
+              </div>
+              <div className='flex flex-col gap-2'>
+                <div className='flex justify-between text-[10px] font-bold uppercase tracking-widest'>
+                  <span className='text-white/40'>Standard Week</span>
+                  <span className='text-white'>10:00 - 18:00</span>
+                </div>
+                <div className='flex justify-between text-[10px] font-bold uppercase tracking-widest'>
+                  <span className='text-white/40'>Maintenance</span>
+                  <span className='text-white'>Sat | 12:00 - 17:00</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div className='flex items-start gap-4 flex-col w-full'>
-          <span className='text-yellow-700 relative w-[80%] text-lg'><span className='heading'>Links</span></span>
-          <ul className='grid grid-cols-1 md:grid-cols-2 gap-2 w-full'>
-            {
-              Links.map((link) => {
-                return (
-                  <Link href={`/${link}`} key={link} className='text-white hover:text-yellow-700 duration-700'>{link}</Link>
-                )
-              })
-            }
-          </ul>
-        </div>
-        <div className='flex items-start gap-4 flex-col w-full'>
-          <span className='text-yellow-700 relative w-[80%] text-lg'><span className='heading'>Contact</span></span>
-          <ul className='flex items-start gap-4 flex-col'>
-            {
-              contact.map((way , index) => {
-                return (
-                  <li key={index} className='flex items-start md:items-center flex-col md:flex-row gap-2 text-white'>
-                    {way.icon}
-                    <span className='w-[50%] text-xs lg:w-full'>{way.text}</span>
-                  </li>
-                )
-              })
-            }
-          </ul>
-        </div>
-        <div className='flex items-start gap-4 flex-col w-full'>
-          <span className='text-yellow-700 relative w-[80%] text-lg'><span className='heading'>Working Hours</span></span>
-          <p className='w-[100%] md:w-[70%] text-sm text-white tracking-[2px]'>Our support available to help you 24 hours a day, seven days a week.</p>
-          <div className='flex items-center flex-col gap-2 w-[80%]'>
-            <div className='flex items-start md:items-center flex-col md:flex-row justify-between w-full'>
-              <span className='text-white'>Sun - Thu</span>
-              <span className='text-white'>10AM - 6PM</span>
-            </div>
-            <div className='flex items-start md:items-center flex-col md:flex-row justify-between w-full'>
-              <span className='text-white'>Fri</span>
-              <span className='text-white'>1PM - 7PM</span>
-            </div>
-            <div className='flex items-start md:items-center flex-col md:flex-row justify-between w-full'>
-              <span className='text-white'>Sat</span>
-              <span className='text-white'>12PM - 7PM</span>
-            </div>
+
+        {/* Footer Bottom */}
+        <div className='pt-12 border-t border-white/5 flex flex-col md:flex-row items-center justify-between gap-6'>
+          <div className="flex items-center gap-2">
+            <ShieldCheck size={14} className="text-electric-cobalt" />
+            <span className='text-[10px] font-black uppercase tracking-[0.2em] text-white/30'>
+              © 2025 SluchBui Engineering Corp. Verified Industrial Build
+            </span>
+          </div>
+          <div className="flex items-center gap-8">
+            <Link href="#" className="text-[10px] font-black uppercase tracking-widest text-white/30 hover:text-white transition-colors">Privacy Policy</Link>
+            <Link href="#" className="text-[10px] font-black uppercase tracking-widest text-white/30 hover:text-white transition-colors">Security Protocol</Link>
           </div>
         </div>
       </div>
-      <div className='w-full flex items-center justify-between py-10 px-16'>
-        <span className='text-base'>© Copyright 2025. All Rights Reserved <span className='text-yellow-700'>@SluchTeam</span></span>
-      </div>
-    </div>
+    </footer>
   )
 }
 

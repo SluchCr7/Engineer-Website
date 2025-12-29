@@ -1,90 +1,120 @@
 'use client';
 import Image from 'next/image';
-import React, { useEffect } from 'react';
-import { FaArrowRight } from "react-icons/fa";
-import { FaArrowLeft } from "react-icons/fa";
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
+import { ChevronLeft, ChevronRight, Quote, Star } from 'lucide-react';
 import Intro from './intro';
 import { Testimonials } from '../Data';
-const Openions = () => {
-  const [currentPage, setCurrentPage] = React.useState(1);
 
+const Openions = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
   const itemsPerPage = 2;
   const totalPages = Math.ceil(Testimonials.length / itemsPerPage);
 
-  const handleNext = () => {
-    if (currentPage < totalPages) {
-      setCurrentPage(currentPage + 1);
-    }
+  const next = () => {
+    setCurrentIndex((prev) => (prev + 1) % totalPages);
   };
 
-  const handlePrev = () => {
-    if (currentPage > 1) {
-      setCurrentPage(currentPage - 1);
-    }
-  };
-
-  const handlePageClick = (page) => {
-    setCurrentPage(page);
+  const prev = () => {
+    setCurrentIndex((prev) => (prev - 1 + totalPages) % totalPages);
   };
 
   const currentTestimonials = Testimonials.slice(
-    (currentPage - 1) * itemsPerPage,
-    currentPage * itemsPerPage
+    currentIndex * itemsPerPage,
+    (currentIndex + 1) * itemsPerPage
   );
 
   return (
-    <div className='flex items-center md:items-start flex-col gap-3 w-full py-5 px-10 min-h-[80vh]'>
-      <Intro title={"Testimonials"} desc={"Check out why our customers love us in each project"} />
-      <div className='flex items-center flex-col justify-center w-full gap-9 min-h-[80vh]'>
-        <div className='flex flex-wrap items-center justify-center gap-6'>
-          {currentTestimonials.map((test) => (
-            <div
-              key={test.id}
-              className='border-[1px] hover:bg-yellow-700 duration-700 transition-all hover:text-white bg-white flex flex-col items-center gap-2 rounded-md border-yellow-700 p-10 w-[80%] md:w-[45%]'
+    <section className='w-full py-24 px-6 md:px-12 relative overflow-hidden'>
+      {/* Structural Accent */}
+      <div className="absolute top-0 left-0 w-[1px] h-full bg-gradient-to-b from-transparent via-electric-cobalt/20 to-transparent ml-12 lg:ml-24"></div>
+
+      <div className="max-w-7xl mx-auto">
+        <div className="flex flex-col md:flex-row items-end justify-between mb-16 gap-8">
+          <Intro
+            title={"Industry Endorsements"}
+            desc={"Verifiable feedback from our Tier-1 industrial partners and structural stakeholders."}
+          />
+          <div className='flex items-center gap-4'>
+            <button
+              onClick={prev}
+              className='p-3 rounded-full glass border border-border hover:border-electric-cobalt hover:bg-electric-cobalt/10 transition-all group'
             >
-              <Image
-                src={test.image}
-                alt='person'
-                width={500}
-                className='w-[70px] h-[70px] rounded-full'
-                height={500}
-              />
-              <h1 className='text-2xl font-bold'>{test.name}</h1>
-              <span className='text-base text-center'>{test.pos}</span>
-              <span className='text-xs text-center'>{test.text}</span>
-            </div>
-          ))}
+              <ChevronLeft className="group-hover:-translate-x-1 transition-transform" size={24} />
+            </button>
+            <button
+              onClick={next}
+              className='p-3 rounded-full glass border border-border hover:border-electric-cobalt hover:bg-electric-cobalt/10 transition-all group'
+            >
+              <ChevronRight className="group-hover:translate-x-1 transition-transform" size={24} />
+            </button>
+          </div>
         </div>
-        <div className='flex items-center gap-3'>
-          <span
-            onClick={handlePrev}
-            className={`border-[1px] border-yellow-700 hover:bg-yellow-700 transition-all duration-700 rounded-full w-[30px] flex items-center justify-center h-[30px] cursor-pointer ${currentPage === 1 && 'opacity-50 cursor-not-allowed'}`}
-          >
-            <FaArrowLeft />
-          </span>
+
+        <div className='grid grid-cols-1 md:grid-cols-2 gap-8'>
+          <AnimatePresence mode='wait'>
+            {currentTestimonials.map((test, index) => (
+              <motion.div
+                key={test.id}
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -20 }}
+                transition={{ duration: 0.4, delay: index * 0.1 }}
+                className='glass-card p-10 rounded-3xl relative overflow-hidden group glow-hover'
+              >
+                <Quote className="absolute top-8 right-8 text-electric-cobalt/10 group-hover:text-electric-cobalt/20 transition-colors" size={80} />
+
+                <div className="flex items-center gap-1 mb-6">
+                  {[...Array(5)].map((_, i) => (
+                    <Star key={i} size={14} className="fill-gold-accent text-gold-accent" />
+                  ))}
+                </div>
+
+                <p className='text-lg md:text-xl font-medium leading-relaxed mb-8 relative z-10 italic text-foreground/80'>
+                  "{test.text}"
+                </p>
+
+                <div className="flex items-center gap-5 pt-8 border-t border-white/5">
+                  <div className="relative w-14 h-14 rounded-full overflow-hidden border-2 border-electric-cobalt/30 group-hover:border-electric-cobalt transition-colors duration-500">
+                    <Image
+                      src={test.image}
+                      alt={test.name}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div>
+                    <h4 className='text-lg font-black font-display tracking-tight'>{test.name}</h4>
+                    <p className='text-xs font-bold uppercase tracking-widest text-electric-cobalt'>{test.pos}</p>
+                  </div>
+                </div>
+
+                {/* Technical Marker */}
+                <div className="absolute bottom-4 right-6 text-[8px] font-black uppercase tracking-[0.3em] text-foreground/10">
+                  ID.VERIFIED_0x{test.id}
+                </div>
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Pagination Dots */}
+        <div className='flex items-center justify-center gap-3 mt-12'>
           {[...Array(totalPages)].map((_, index) => (
-            <span
+            <button
               key={index}
-              onClick={() => handlePageClick(index + 1)}
-              className={`px-3 py-1 border-[1px] border-yellow-700 rounded-full cursor-pointer ${
-                currentPage === index + 1
-                  ? 'bg-yellow-700 text-white'
-                  : 'hover:bg-yellow-700 hover:text-white'
-              }`}
-            >
-              {index + 1}
-            </span>
+              onClick={() => setCurrentIndex(index)}
+              className={`h-1 rounded-full transition-all duration-500 ${currentIndex === index
+                  ? 'w-12 bg-electric-cobalt'
+                  : 'w-4 bg-border hover:bg-electric-cobalt/30'
+                }`}
+            />
           ))}
-          <span
-            onClick={handleNext}
-            className={`border-[1px] border-yellow-700 hover:bg-yellow-700 transition-all duration-700 rounded-full w-[30px] flex items-center justify-center h-[30px] cursor-pointer ${currentPage === totalPages && 'opacity-50 cursor-not-allowed'}`}
-          >
-            <FaArrowRight />
-          </span>
         </div>
       </div>
-    </div>
+    </section>
   );
 };
 
 export default Openions;
+

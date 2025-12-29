@@ -2,164 +2,158 @@
 @tailwind components;
 @tailwind utilities;
 
-.Menu{
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100vh;
-    background-color: rgba(0, 0, 0, 0.5);
-    z-index: 100;
+@layer base {
+  :root {
+    --background: #FFFFFF;
+    --foreground: #0F172A;
+    --card: #FFFFFF;
+    --card-foreground: #0F172A;
+    --popover: #FFFFFF;
+    --popover-foreground: #0F172A;
+    --primary: #2563EB;
+    --primary-foreground: #FFFFFF;
+    --secondary: #F1F5F9;
+    --secondary-foreground: #1E293B;
+    --muted: #F1F5F9;
+    --muted-foreground: #64748B;
+    --accent: #F1F5F9;
+    --accent-foreground: #1E293B;
+    --destructive: #EF4444;
+    --destructive-foreground: #FFFFFF;
+    --border: #E2E8F0;
+    --input: #E2E8F0;
+    --ring: #2563EB;
+    --radius: 0.5rem;
+  }
+
+  .dark {
+    --background: #0B0D17;
+    --foreground: #F8FAFC;
+    --card: #1E293B;
+    --card-foreground: #F8FAFC;
+    --popover: #0B0D17;
+    --popover-foreground: #F8FAFC;
+    --primary: #2563EB;
+    --primary-foreground: #FFFFFF;
+    --secondary: #1E293B;
+    --secondary-foreground: #F8FAFC;
+    --muted: #1E293B;
+    --muted-foreground: #94A3B8;
+    --accent: #1E293B;
+    --accent-foreground: #F8FAFC;
+    --destructive: #7F1D1D;
+    --destructive-foreground: #F8FAFC;
+    --border: #1E293B;
+    --input: #1E293B;
+    --ring: #2563EB;
+  }
 }
 
-.title{
-    padding-left: 45px;
-}
-.title::before{
-    content: "";
-    width: 40px;
-    height: 2px;
-    background-color: #d1a506;
-    position: absolute;
-    top: 50%;
-    left: 0;
-}
-.title_num{
-  /* Stroke text */
-    -webkit-text-stroke: 1px #d1a506;
-    -webkit-text-fill-color: transparent;
-    font-weight: 900;
-}
-.heading{
-    transition: 1px all ease;
-}
-.heading::after{
-    background-color: #d1a506;
-    width: 100%;
-    height: 1px;
-    content: "";
-    position: absolute;
-    top: 30px;
-    left: 0;
-}
-.heading:hover{
-    width: 100%;
-}
-.listDetails{
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 100%;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */
-  color: white;
-  text-align: center;
-  padding: 10px;
-  box-sizing: border-box;
-  opacity: 0; /* Initially hidden */
-  visibility: hidden; /* Hidden from view */
-  transition: opacity 0.3s, visibility 0.3s; /* Smooth transition */
-}
-.imageContainer:hover .listDetails{
-    opacity: 1; /* Show on hover */
-    visibility: visible; /* Visible on hover */
+@layer base {
+  * {
+    @apply border-border;
+  }
+  body {
+    @apply bg-background text-foreground font-sans selection:bg-electric-cobalt selection:text-white;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-display font-bold tracking-tight;
+  }
 }
 
-.itemFilter{
-    filter: contrast(0.8);
-    background-attachment: fixed;
-    background-position: center;
-    background-size: cover;
-    background-repeat: no-repeat;
-}
-.gradient_border {
-    border: 5px solid; /* Adjust the border width as needed */
-    border-image: linear-gradient(to left, rgb(177, 128, 4), black) 1;
-    /* Adjust direction and colors in the gradient as needed */
-    border-radius: 5px; /* Optional: Add rounded corners */
-}
-.dataProject{
-  position: absolute;
-  bottom: 0%;
-  top: 0%;
-  left: 0;
-  width: 100%;
-  display: flex;
-  align-items: center;
-  border-radius: 10px;
-  justify-content: center;
-  flex-direction: column;
-  gap: 10px;
-  background: rgba(0, 0, 0, 0.7); /* Semi-transparent background */ 
-  color: white;
-  text-align: center;
-  padding: 10px;
-  box-sizing: border-box;
-  opacity: 0; /* Initially hidden */
-  visibility: hidden; /* Hidden from view */
-  transition: opacity 1s, visibility 0.3s; /* Smooth transition */
-}
-
-.containProject:hover .dataProject{
-    opacity: 1;
-    visibility: visible;
-}
-
-.NameDetail{
-    height: 100%;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.7);
-    opacity: 0; /* Initially hidden */
-    visibility: hidden; /* Hidden from view */
-    transition: opacity 1s, visibility 0.3s; /* Smooth transition */
-    border-radius: 10px;
-}
-
-.contentContainer:hover .NameDetail{
-    opacity: 1;
-    visibility: visible;
-}
-
-.timeanimate{
-    transition: visibility 1s; /* Smooth transition */
-}
-
-/* Scrollbar Styles */
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-    width: 10px;
+  width: 8px;
+  height: 8px;
 }
 
 ::-webkit-scrollbar-track {
-    background: black;
+  @apply bg-background;
 }
 
 ::-webkit-scrollbar-thumb {
-    background: rgb(177, 128, 4);
+  @apply bg-slate-gray/30 rounded-full hover:bg-electric-cobalt/50 transition-colors;
 }
 
-.admin-card {
-    @apply flex flex-col items-center gap-3 bg-black text-white p-5 rounded-lg cursor-pointer hover:bg-gray-900 transition;
+.dark ::-webkit-scrollbar-thumb {
+  @apply bg-slate-gray rounded-full hover:bg-electric-cobalt/50;
 }
 
-.product-card {
-    @apply border border-yellow-700 p-6 rounded-lg shadow-lg flex flex-col items-center gap-4 relative bg-white;
+/* Premium Layout Utilities */
+.glass {
+  @apply bg-background/60 backdrop-blur-md border border-white/20 dark:border-white/10;
 }
 
-.user-card {
-    @apply border p-4 rounded-lg shadow-lg flex flex-col items-center bg-white;
+.glass-card {
+  @apply bg-card/40 backdrop-blur-xl border border-border/50 shadow-xl;
 }
 
-.price-badge {
-    @apply absolute top-2 right-2 bg-black text-yellow-500 z-[999] py-1 px-3 rounded-2xl;
+.glow-hover {
+  @apply transition-all duration-300 hover:shadow-[0_0_20px_rgba(37,99,235,0.2)] dark:hover:shadow-[0_0_30px_rgba(37,99,235,0.15)];
 }
 
-.btn-primary {
-    @apply bg-black text-yellow-600 p-3 rounded-lg font-bold hover:bg-gray-900 transition;
+.industrial-grid {
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(37,99,235,0.05) 1px, transparent 0);
+  background-size: 24px 24px;
 }
 
-.btn-danger {
-    @apply bg-red-600 text-white px-4 py-2 rounded-md hover:bg-red-700 transition;
+.dark .industrial-grid {
+  background-image: 
+    radial-gradient(circle at 2px 2px, rgba(37,99,235,0.1) 1px, transparent 0);
 }
 
-.product-image {
-    @apply w-full object-cover rounded-md cursor-pointer transform transition-transform hover:scale-105;
-};
+/* Button & Interaction Styles */
+.btn-premium {
+  @apply relative overflow-hidden px-6 py-3 rounded-md font-medium transition-all duration-300
+         bg-electric-cobalt text-white shadow-lg hover:shadow-electric-cobalt/30
+         hover:-translate-y-0.5 active:translate-y-0 active:scale-95;
+}
+
+.btn-outline-premium {
+  @apply px-6 py-3 rounded-md font-medium transition-all duration-300
+         border border-border bg-transparent hover:bg-secondary
+         hover:border-electric-cobalt/50 active:scale-95;
+}
+
+/* Blueprint Pattern */
+.blueprint-bg {
+  background-image: 
+    linear-gradient(to right, rgba(37,99,235,0.05) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(37,99,235,0.05) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+/* Typography Enhancements */
+.text-gradient {
+  @apply bg-clip-text text-transparent bg-gradient-to-r from-electric-cobalt to-cyber-lime;
+}
+
+/* Old styles to replace or migrate */
+.title {
+  @apply relative pl-12 font-display;
+}
+.title::before {
+  content: "";
+  @apply absolute left-0 top-1/2 -translate-y-1/2 w-10 h-[2px] bg-electric-cobalt;
+}
+
+.heading {
+  @apply relative inline-block transition-all duration-300;
+}
+.heading::after {
+  content: "";
+  @apply absolute -bottom-1 left-0 w-0 h-[2px] bg-electric-cobalt transition-all duration-300;
+}
+.heading:hover::after {
+  @apply w-full;
+}
+
+/* Masonry for Portfolio (Simplified) */
+.masonry-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  grid-gap: 1.5rem;
+  grid-auto-flow: dense;
+}
+
